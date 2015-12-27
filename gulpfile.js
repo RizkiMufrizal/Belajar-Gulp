@@ -38,3 +38,9 @@ gulp.task('server', function() {
     livereload: true
   });
 });
+
+gulp.task('watch', function() {
+  gulp.watch('./src/*.js', ['minify-js']);
+  gulp.watch('./src/*.css', ['minify-css']);
+  gulp.watch('./src/*.html', ['minify-html']);
+});
