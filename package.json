@@ -1,0 +1,14 @@
+{
+  "name": "belajar-gulp",
+  "version": "1.0.0",
+  "description": "belajar git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rizki Mufrizal (mufrizalrizki@gmail.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
