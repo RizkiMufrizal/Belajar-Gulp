@@ -10,7 +10,8 @@ gulp.task('minify-css', function() {
     .pipe(gulpMinifyCss({
       compatibility: 'ie8'
     }))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/'))
+    .pipe(gulpConnect.reload());
 });
 
 gulp.task('minify-js', function() {
@@ -21,7 +22,8 @@ gulp.task('minify-js', function() {
     ])
     .pipe(gulpConcat('bundle.js'))
     .pipe(gulpUglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist'))
+    .pipe(gulpConnect.reload());
 });
 
 gulp.task('minify-html', function() {
@@ -30,6 +32,7 @@ gulp.task('minify-html', function() {
       collapseWhitespace: true
     }))
     .pipe(gulp.dest('dist'))
+    .pipe(gulpConnect.reload());
 });
 
 gulp.task('server', function() {
@@ -44,3 +47,5 @@ gulp.task('watch', function() {
   gulp.watch('./src/*.css', ['minify-css']);
   gulp.watch('./src/*.html', ['minify-html']);
 });
+
+gulp.task('default', ['watch', 'server']);
