@@ -3,6 +3,7 @@ var gulpMinifyCss = require('gulp-minify-css');
 var gulpConcat = require('gulp-concat');
 var gulpUglify = require('gulp-uglify');
 var gulpHtmlmin = require('gulp-htmlmin');
+var gulpConnect = require('gulp-connect');
 
 gulp.task('minify-css', function() {
   gulp.src('./src/index.css')
@@ -29,4 +30,11 @@ gulp.task('minify-html', function() {
       collapseWhitespace: true
     }))
     .pipe(gulp.dest('dist'))
+});
+
+gulp.task('server', function() {
+  gulpConnect.server({
+    root: 'src',
+    livereload: true
+  });
 });
