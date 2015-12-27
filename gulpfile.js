@@ -4,6 +4,8 @@ var gulpConcat = require('gulp-concat');
 var gulpUglify = require('gulp-uglify');
 var gulpHtmlmin = require('gulp-htmlmin');
 var gulpConnect = require('gulp-connect');
+var clean = require('gulp-clean');
+var gulpSequence = require('gulp-sequence');
 
 gulp.task('minify-css', function() {
   gulp.src('./src/index.css')
@@ -47,5 +49,14 @@ gulp.task('watch', function() {
   gulp.watch('./src/*.css', ['minify-css']);
   gulp.watch('./src/*.html', ['minify-html']);
 });
+
+gulp.task('clean', function() {
+  return gulp.src('dist', {
+    read: false
+  })
+    .pipe(clean());
+});
+
+gulp.task('build', gulpSequence('clean', 'minify-css', 'minify-js', 'minify-html'));
 
 gulp.task('default', ['watch', 'server']);
